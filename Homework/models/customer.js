@@ -11,12 +11,12 @@ class Customer {
     }
 
     save() {
-        let sql = `INSERT INTO customer (id,type,name,income,createdAt,phoneNumber) VALUES (${this.id},'${this.type}','${this.name}','${this.income}','${this.createdAt}','${this.phoneNumber}');`;
+        let sql = `INSERT INTO customer (id,type,name,income,createdAt,phoneNumber) VALUES ('${this.id}','${this.type}','${this.name}','${this.income}','${this.createdAt}','${this.phoneNumber}');`;
         return db.execute(sql);
     }
 
     update() {
-        let sql = `UPDATE customer SET type=${this.type},name =${this.name},income=${this.income},createdAt=${this.createdAt},phoneNumber=${this.phoneNumber} WHERE id = ${this.id}`;
+        let sql = `UPDATE customer SET type='${this.type}',name ='${this.name}',income='${this.income}',createdAt='${this.createdAt}',phoneNumber='${this.phoneNumber}' WHERE id = '${this.id}'`;
         return db.execute(sql);
     }
 

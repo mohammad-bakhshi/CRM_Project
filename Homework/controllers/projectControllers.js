@@ -48,8 +48,8 @@ exports.updateProject = async (req, res, next) => {
 exports.deleteProject = async (req, res, next) => {
    try {
     let projectId=req.params.id;
-    let result=await Project.delete(projectId);
-    res.status(200).json({result});
+    await Project.delete(projectId);
+    res.status(200).json({message: 'Project was deleted successfully'});
    } catch (error) {
        console.log(error);
        next();

@@ -49,7 +49,7 @@ exports.deleteTicket = async (req, res, next) => {
     try {
         let ticketId = req.params.id;
         let result = await Ticket.delete(ticketId);
-        res.status(200).json({ result });
+        res.status(200).json({ message:'Ticket was deleted successfully' });
     } catch (error) {
         console.log(error);
         next();

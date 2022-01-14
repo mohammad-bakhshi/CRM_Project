@@ -11,12 +11,12 @@ class Ticket {
     }
 
     save() {
-        let sql = `INSERT INTO ticket (id,status,title,description,createdAt,solution) VALUES (${this.id},'${this.status}','${this.title}','${this.description}','${this.createdAt}','${this.solution}');`;
+        let sql = `INSERT INTO ticket (id,status,title,description,createdAt,solution) VALUES ('${this.id}','${this.status}','${this.title}','${this.description}','${this.createdAt}','${this.solution}');`;
         return db.execute(sql);
     }
 
     update() {
-        let sql = `UPDATE ticket SET type=${this.status},name =${this.title},income=${this.description},createdAt=${this.createdAt},phoneNumber=${this.phoneNumber} WHERE id = ${this.id}`;
+        let sql = `UPDATE ticket SET type='${this.status}',name ='${this.title}',income='${this.description}',createdAt='${this.createdAt}',phoneNumber='${this.phoneNumber}' WHERE id = '${this.id}'`;
         return db.execute(sql);
     }
 

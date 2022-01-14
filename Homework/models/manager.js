@@ -9,12 +9,12 @@ class Manager {
     }
 
     save() {
-        let sql = `INSERT INTO manager (id,name,phoneNumber,nationalCode) VALUES (${this.id},'${this.name}','${this.phoneNumber},${this.nationalCode}');`;
+        let sql = `INSERT INTO manager (id,name,phoneNumber,nationalCode) VALUES ('${this.id}','${this.name}','${this.phoneNumber}','${this.nationalCode}');`;
         return db.execute(sql);
     }
 
-    update() {
-        let sql = `UPDATE manager SET name =${this.name},phoneNumber=${this.phoneNumber},nationalCode=${this.nationalCode} WHERE id = ${this.id}`;
+    update(id) {
+        let sql = `UPDATE manager SET name ='${this.name}',phoneNumber='${this.phoneNumber}',nationalCode='${this.nationalCode}' WHERE id = '${this.id}'`;
         return db.execute(sql);
     }
 

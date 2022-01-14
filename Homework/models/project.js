@@ -8,13 +8,13 @@ class Project {
     }
 
     save() {
-        let sql = `INSERT INTO project (id,title,description) VALUES (${this.id},'${this.title}','${this.description}');`;
+        let sql = `INSERT INTO project (id,title,description) VALUES ('${this.id}','${this.title}','${this.description}');`;
         return db.execute(sql);
     }
 
     update()
     {
-        let sql=`UPDATE project SET title =${this.title},description=${this.description} WHERE id = ${this.id}`;
+        let sql=`UPDATE project SET title ='${this.title}',description='${this.description}' WHERE id = '${this.id}'`;
         return db.execute(sql);
     }
 

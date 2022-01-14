@@ -26,6 +26,7 @@ exports.createNewManager = async (req, res, next) => {
     try {
         let manager=new Manager(req.body.id,req.body.name,req.body.phoneNumber,req.body.nationalCode);
         manager=await manager.save();
+        console.log(manager);
         res.status(201).json({message: 'Manager created successfully'});
     } catch (error) {
         console.log(error);
@@ -36,7 +37,7 @@ exports.createNewManager = async (req, res, next) => {
 exports.updateManager = async (req, res, next) => {
    try {
        let managerId=req.params.id;
-       let manager=new Manager(parseInt(projectId),req.body.name,req.body.phoneNumber,req.body.nationalCode);
+       let manager=new Manager(managerId,req.body.name,req.body.phoneNumber,req.body.nationalCode);
        manager=await manager.update();
        res.status(201).json({message:'Manager was updated successfully'});
    } catch (error) {
@@ -48,8 +49,8 @@ exports.updateManager = async (req, res, next) => {
 exports.deleteManager = async (req, res, next) => {
    try {
     let managerId=req.params.id;
-    let result=await Manager.delete(managerId);
-    res.status(200).json({result});
+    await Manager.delete(managerId);
+    res.status(200).json({message:'Manager was deleted successfully'});
    } catch (error) {
        console.log(error);
        next();

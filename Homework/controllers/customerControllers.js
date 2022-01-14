@@ -48,8 +48,8 @@ exports.updateCustomer = async (req, res, next) => {
 exports.deleteCustomer = async (req, res, next) => {
     try {
         let customerId = req.params.id;
-        let result = await Customer.delete(customerId);
-        res.status(200).json({ result });
+        await Customer.delete(customerId);
+        res.status(200).json({ message: 'Customer was deleted successfully'});
     } catch (error) {
         console.log(error);
         next();
