@@ -21,7 +21,7 @@ class Ticket {
     }
 
     static findAll() {
-        let sql = "SELECT * FROM ticket";
+        let sql = "SELECT * FROM ticket INNER JOIN pcm ON ticket.pcmId=pcm.id";
         return db.execute(sql);
     }
 
