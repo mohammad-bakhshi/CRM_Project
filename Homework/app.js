@@ -4,6 +4,7 @@ const Project = require('./routes/projectRouter');
 const Manager=require('./routes/managerRouter');
 const Customer=require('./routes/customerRouter');
 const Ticket=require('./routes/ticketRouter');
+const Message=require('./routes/messageRouter');
 const port = 3000;
 
 
@@ -15,6 +16,6 @@ app.use('/project', Project);
 app.use('/manager',Manager);
 app.use('/customer',Customer);
 app.use('/ticket',Ticket)
-
+app.use('/message',Message);
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));

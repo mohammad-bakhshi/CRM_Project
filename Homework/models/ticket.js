@@ -1,22 +1,23 @@
 const db = require("../database/connection");
 
 class Ticket {
-    constructor(id, status, title, description, createdAt, solution) {
+    constructor(id, status, title, description, createdAt, solution, pcmId) {
         (this.id = id),
             (this.status = status),
             (this.title = title),
             (this.description = description),
             (this.createdAt = createdAt),
-            (this.solution = solution)
+            (this.solution = solution),
+            (this.pcmId = pcmId)
     }
 
     save() {
-        let sql = `INSERT INTO ticket (id,status,title,description,createdAt,solution) VALUES ('${this.id}','${this.status}','${this.title}','${this.description}','${this.createdAt}','${this.solution}');`;
+        let sql = `INSERT INTO ticket (id,status,title,description,createdAt,solution,pcmId) VALUES ('${this.id}','${this.status}','${this.title}','${this.description}','${this.createdAt}','${this.solution}','${this.pcmId}');`;
         return db.execute(sql);
     }
 
     update() {
-        let sql = `UPDATE ticket SET type='${this.status}',name ='${this.title}',income='${this.description}',createdAt='${this.createdAt}',phoneNumber='${this.phoneNumber}' WHERE id = '${this.id}'`;
+        let sql = `UPDATE ticket SET type='${this.status}',name ='${this.title}',income='${this.description}',createdAt='${this.createdAt}',phoneNumber='${this.phoneNumber}',pcmId='${this.pcmId}' WHERE id = '${this.id}'`;
         return db.execute(sql);
     }
 
