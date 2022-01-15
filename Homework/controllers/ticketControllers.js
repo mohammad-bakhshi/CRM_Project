@@ -1,4 +1,5 @@
 const Ticket = require('../models/ticket');
+const PCM=require('../models/pcm');
 
 
 exports.getAllTickets = async (req, res, next) => {
@@ -24,7 +25,10 @@ exports.getTicketById = async (req, res, next) => {
 
 exports.createNewTicket = async (req, res, next) => {
     try {
-        let ticket = new Ticket(req.body.id, req.body.status, req.body.title, req.body.description, req.body.createdAt, req.body.solution);
+        let managerId=getRandomNumberBetween(1,5);
+        let pcm=new PCM(managerId,req.body.customerId,req.body.projectId);
+        pcm.save()
+        let ticket = new Ticket(req.body.id, req.body.status, req.body.title, req.body.description,req.body.closedAt, req.body.createdAt, req.body.solution,req.body.id);
         ticket = await ticket.save();
         res.status(201).json({ message: 'Ticket created successfully' });
     } catch (error) {
@@ -49,9 +53,15 @@ exports.deleteTicket = async (req, res, next) => {
     try {
         let ticketId = req.params.id;
         let result = await Ticket.delete(ticketId);
+        await PCM.delete(ticketId);
         res.status(200).json({ message:'Ticket was deleted successfully' });
     } catch (error) {
         console.log(error);
         next();
     }
+}
+
+
+function getRandomNumberBetween(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
 }
